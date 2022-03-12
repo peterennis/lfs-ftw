@@ -10,6 +10,10 @@ REM qemu-system-x86_64 -hda Arch-Linux-x86_64-basic-20220220.48463.qcow2 -accel 
 
 REM qemu-system-x86_64.exe -hda Arch-Linux-x86_64-basic-20220220.48463.qcow2 -netdev user,hostfwd=tcp::10022-:22 -accel hax -m 4G
 
-qemu-system-x86_64.exe -hda Arch-Linux-x86_64-basic-20220220.48463.qcow2 -device e1000,netdev=net0 -netdev user,id=net0,hostfwd=tcp::5555-:22 -accel hax -m 4G
+REM qemu-system-x86_64.exe -hda Arch-Linux-x86_64-basic-20220220.48463.qcow2 -device e1000,netdev=net0 -netdev user,id=net0,hostfwd=tcp::5555-:22 -accel hax -m 4G
+
+qemu-system-x86_64.exe -hda Arch-Linux-x86_64-basic-20220220.48463.qcow2 -net user,smb=src -device e1000,netdev=net0 -netdev user,id=net0,hostfwd=tcp::5555-:22 -accel hax -m 4G
+
+REM qemu-system-x86_64.exe -hda Arch-Linux-x86_64-basic-20220220.48463.qcow2 -net user,smb=//adaept/src -device e1000,netdev=net0 -netdev user,id=net0,net=192.168.0.0/24,dhcpstart=192.168.0.15,hostfwd=tcp::5555-:22 -accel hax -m 4G
 
 pause
